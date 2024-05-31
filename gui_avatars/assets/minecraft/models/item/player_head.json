@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/template_skull",
+  "overrides": [
+    {"predicate": {"custom_model_data": 1}, "model": "item/avatar"},
+    {"predicate": {"custom_model_data": 2}, "model": "item/avatar_flipped"}
+  ]
+}
