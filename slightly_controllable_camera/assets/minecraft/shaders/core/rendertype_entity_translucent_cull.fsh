@@ -65,7 +65,7 @@ void main() {
         vec3 pos = pos0 * 0.5 + pos2 * 0.5;
 
         vec3 pPos = gl_PrimitiveID % 2 == 0 ? pos1 : pos3;
-        vec3 tangent = normalize(gl_PrimitiveID % 2 == 1 ? pPos - pos0 : pos2 - pPos);
+        vec3 tangent = normalize(gl_PrimitiveID % 2 == 1 ? pos0 - pPos : pPos - pos2);
         vec3 bitangent = normalize(gl_PrimitiveID % 2 == 0 ? pPos - pos0 : pos2 - pPos);
 
         // Data
