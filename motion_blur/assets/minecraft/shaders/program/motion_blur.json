@@ -1,0 +1,18 @@
+{
+    "blend": {
+        "func": "add",
+        "srcrgb": "one",
+        "dstrgb": "zero"
+    },
+    "vertex": "motion_blur",
+    "fragment": "motion_blur",
+    "attributes": [],
+    "samplers": [
+        { "name": "DiffuseSampler" },
+        { "name": "DiffuseDepthSampler" },
+        { "name": "PreviousDataSampler" }
+    ],
+    "uniforms": [
+        { "name": "OutSize", "type": "float",     "count": 2,  "values": [ 1.0, 1.0 ] }
+    ]
+}

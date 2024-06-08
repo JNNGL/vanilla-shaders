@@ -1,0 +1,20 @@
+{
+    "blend": {
+        "func": "add",
+        "srcrgb": "one",
+        "dstrgb": "zero"
+    },
+    "vertex": "depth_buffer",
+    "fragment": "depth_buffer",
+    "attributes": [],
+    "samplers": [
+        { "name": "DiffuseSampler" },
+        { "name": "DepthSampler0" },
+        { "name": "DepthSampler1" },
+        { "name": "DepthSampler2" },
+        { "name": "DepthSampler3" },
+        { "name": "DepthSampler4" },
+        { "name": "DepthSampler5" }
+    ],
+    "uniforms": []
+}

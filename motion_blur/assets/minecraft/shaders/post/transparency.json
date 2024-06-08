@@ -1,0 +1,118 @@
+{
+    "targets": [
+        "water",
+        "translucent",
+        "itemEntity",
+        "particles",
+        "clouds",
+        "weather",
+        "swap",
+        "depth",
+        "previous"
+    ],
+    "passes": [
+        {
+            "name": "transparency",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "auxtargets": [
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "minecraft:main:depth"
+                },
+                {
+                    "name": "TranslucentSampler",
+                    "id": "translucent"
+                },
+                {
+                    "name": "TranslucentDepthSampler",
+                    "id": "translucent:depth"
+                },
+                {
+                    "name": "ItemEntitySampler",
+                    "id": "itemEntity"
+                },
+                {
+                    "name": "ItemEntityDepthSampler",
+                    "id": "itemEntity:depth"
+                },
+                {
+                    "name": "ParticlesSampler",
+                    "id": "particles"
+                },
+                {
+                    "name": "ParticlesDepthSampler",
+                    "id": "particles:depth"
+                },
+                {
+                    "name": "CloudsSampler",
+                    "id": "clouds"
+                },
+                {
+                    "name": "CloudsDepthSampler",
+                    "id": "clouds:depth"
+                },
+                {
+                    "name": "WeatherSampler",
+                    "id": "weather"
+                },
+                {
+                    "name": "WeatherDepthSampler",
+                    "id": "weather:depth"
+                }
+            ]
+        },
+        {
+            "__comment": "For compatibility with Sodium",
+            "name": "depth_buffer",
+            "intarget": "minecraft:main",
+            "outtarget": "depth",
+            "auxtargets": [
+                {
+                    "name": "DepthSampler0",
+                    "id": "minecraft:main:depth"
+                },
+                {
+                    "name": "DepthSampler1",
+                    "id": "translucent:depth"
+                },
+                {
+                    "name": "DepthSampler2",
+                    "id": "itemEntity:depth"
+                },
+                {
+                    "name": "DepthSampler3",
+                    "id": "particles:depth"
+                },
+                {
+                    "name": "DepthSampler4",
+                    "id": "clouds:depth"
+                },
+                {
+                    "name": "DepthSampler5",
+                    "id": "weather:depth"
+                }
+            ]
+        },
+        {
+            "name": "motion_blur",
+            "intarget": "swap",
+            "outtarget": "minecraft:main",
+            "auxtargets": [
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "depth"
+                },
+                {
+                    "name": "PreviousDataSampler",
+                    "id": "previous"
+                }
+            ]
+        },
+        {
+            "name": "blit",
+            "intarget": "swap",
+            "outtarget": "previous"
+        }
+    ]
+}
