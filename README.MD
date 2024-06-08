@@ -1,4 +1,5 @@
-Some of my vanilla shaders that I made for fun. You can use them as long as you don't sell them, don't pass them off as your own, and provide a link to this repo.
+Some of my vanilla shaders that I made for fun.<br>
+**You can use them as long as you don't sell them, don't pass them off as your own, and provide a link to this repo.**
 
 ## GUI Avatars
 
