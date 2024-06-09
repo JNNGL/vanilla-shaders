@@ -12,7 +12,7 @@ Highly inspired by Spheya's shader (used it as reference).
 
 Allows to rotate the camera up to ±6-7 degrees on any axis.
 
-https://github.com/JNNGL/vanilla-shaders/assets/45935949/57679381-839d-4ec8-84c2-757936a41c7f
+https://github.com/JNNGL/vanilla-shaders/assets/45935949/f94adb60-9467-44ee-8b8c-ec41a3d084c7
 
 ## Motion Blur
 
