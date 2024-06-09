@@ -1,5 +1,5 @@
 Some of my vanilla shaders that I made for fun.<br>
-**You can use them as long as you don't sell them, don't pass them off as your own, and provide a link to this repo.**
+**You can use them as long as you don't sell them and provide a link to this repo.**
 
 ## GUI Avatars
 
@@ -23,3 +23,7 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/46529119-775c-49f7-b8c1
 ## Bloom
 
 ![Bloom](images/bloom.png)
+
+## Animated Unicodes
+
+https://github.com/JNNGL/vanilla-shaders/assets/45935949/66c9a155-ea97-4c16-823b-564b883db5aa

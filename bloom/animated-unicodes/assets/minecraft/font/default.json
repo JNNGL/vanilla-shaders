@@ -1,0 +1,11 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "minecraft:animated.png",
+            "ascent": 11,
+            "height": 15,
+            "chars": ["ல"]
+        }
+    ]
+}
