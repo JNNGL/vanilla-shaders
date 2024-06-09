@@ -20,3 +20,6 @@ Adds motion blur.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/46529119-775c-49f7-b8c1-1ae2f371f452
 
+## Bloom
+
+![Bloom](images/bloom.png)
