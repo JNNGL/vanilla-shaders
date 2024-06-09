@@ -12,6 +12,7 @@ flat in float prevScale;
 out vec4 fragColor;
 
 vec4 bilinear(sampler2D s, vec2 tex) {
+    tex = clamp(tex, 0.0, 1.0);
     tex *= inRes;
     tex -= 0.5;
 
