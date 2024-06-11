@@ -27,3 +27,14 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/46529119-775c-49f7-b8c1
 ## Animated Unicodes
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/66c9a155-ea97-4c16-823b-564b883db5aa
+
+## Simple AO
+
+Simple SSAO implementation.
+
+ Simple AO          | Vanilla
+:------------------:|:----------------------:
+![](images/ao1.png) | ![](images/noao1.png)
+![](images/ao2.png) | ![](images/noao2.png)
+![](images/ao3.png) | ![](images/noao3.png)
+
