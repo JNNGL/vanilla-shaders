@@ -61,7 +61,7 @@ void main() {
     vec3 position = getPosition(texCoord, depth);
     vec3 normal = getNormal(texCoord);
 
-    vec3 seed = vec3(gl_FragCoord.xy, 0.0);
+    vec3 seed = floor(position * 1024) / 1024;
 
     vec3 rndVec = vec3(random(seed) * 2.0 - 1.0, random(seed) * 2.0 - 1.0, 0.0);
     vec3 tangent = normalize(rndVec - normal * dot(rndVec, normal));
@@ -70,8 +70,6 @@ void main() {
 
     const float radius = 1.0;
     const int samples = 16;
-
-    seed = vec3(0.0);
 
     float markerCutoff = 1.5 / InSize.y;
 
