@@ -55,5 +55,5 @@ void main() {
     vec3 position = getPosition(texCoord, depth);
     float dist = length(position);
 
-    fragColor *= ao_fog(ao / wSum, dist);
+    fragColor.rgb *= ao_fog(ao / wSum, dist);
 }
