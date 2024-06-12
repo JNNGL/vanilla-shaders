@@ -32,7 +32,7 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/66c9a155-ea97-4c16-823b
 
 Simple SSAO implementation.
 
- Simple AO          | Vanilla
+ SSAO               | Vanilla
 :------------------:|:----------------------:
 ![](images/ao1.png) | ![](images/noao1.png)
 ![](images/ao2.png) | ![](images/noao2.png)
