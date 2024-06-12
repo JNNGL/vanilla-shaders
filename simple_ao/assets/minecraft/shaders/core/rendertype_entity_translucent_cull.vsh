@@ -29,6 +29,10 @@ out vec4 overlayColor;
 out vec2 texCoord0;
 out vec4 normal;
 out float marker;
+out vec4 position0;
+out vec4 position1;
+out vec4 position2;
+out vec4 position3;
 
 void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
@@ -43,7 +47,20 @@ void main() {
     texCoord0 = UV0;
     normal = ProjMat * ModelViewMat * vec4(Normal, 0.0);
 
+    position0 = 
+    position1 = 
+    position2 = 
+    position3 = vec4(0.0);
+
     if (marker > 0.0) {
+        vec3 worldSpace = IViewRotMat * Position;
+        switch (gl_VertexID % 4) {
+            case 0: position0 = vec4(worldSpace, 1.0); break;
+            case 1: position1 = vec4(worldSpace, 1.0); break;
+            case 2: position2 = vec4(worldSpace, 1.0); break;
+            case 3: position3 = vec4(worldSpace, 1.0); break;
+        }
+        
         // TODO: better vertex positions
         vec2 bottomLeftCorner = vec2(-1.0);
         vec2 topRightCorner = vec2(1.0, 0.1);

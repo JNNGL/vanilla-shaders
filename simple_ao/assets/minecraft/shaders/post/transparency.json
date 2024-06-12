@@ -9,7 +9,11 @@
         "normals",
         "swap",
         "ao",
-        "main"
+        "prevAo",
+        "temporal",
+        "main",
+        "prevDepth",
+        "prevNormals"
     ],
     "passes": [
         {
@@ -46,6 +50,33 @@
             ]
         },
         {
+            "name": "temporal",
+            "intarget": "ao",
+            "outtarget": "temporal",
+            "auxtargets": [
+                {
+                    "name": "PreviousDiffuseSampler",
+                    "id": "prevAo"
+                },
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "minecraft:main:depth"
+                },
+                {
+                    "name": "PreviousDepthSampler",
+                    "id": "prevDepth"
+                },
+                {
+                    "name": "NormalSampler",
+                    "id": "normals"
+                },
+                {
+                    "name": "PreviousNormalSampler",
+                    "id": "prevNormals"
+                }
+            ]
+        },
+        {
             "name": "apply_ao",
             "intarget": "minecraft:main",
             "outtarget": "main",
@@ -60,7 +91,28 @@
                 },
                 {
                     "name": "AmbientOcclusionSampler",
-                    "id": "ao"
+                    "id": "temporal"
+                }
+            ]
+        },
+        {
+            "name": "blit",
+            "intarget": "temporal",
+            "outtarget": "prevAo"
+        },
+        {
+            "name": "blit",
+            "intarget": "normals",
+            "outtarget": "prevNormals"
+        },
+        {
+            "name": "copy_depth",
+            "intarget": "minecraft:main",
+            "outtarget": "prevDepth",
+            "auxtargets": [
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "minecraft:main:depth"
                 }
             ]
         },

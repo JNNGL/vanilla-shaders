@@ -6,10 +6,12 @@ uniform sampler2D NormalSampler;
 uniform sampler2D VectorSampler;
 
 uniform vec2 InSize;
+uniform float Time;
 
 in vec2 texCoord;
 flat in mat4 viewProj;
 flat in mat4 invViewProj;
+flat in float time;
 
 out vec4 fragColor;
 
@@ -52,6 +54,11 @@ vec3 getNormal(vec2 uv) {
 }
 
 void main() {
+    if (int(floor(gl_FragCoord.y)) == 0) {
+        fragColor = texelFetch(DiffuseSampler, ivec2(gl_FragCoord.xy), 0);
+        return;
+    }
+
     float depth = texture(DiffuseDepthSampler, texCoord).r;
     if (depth == 1.0) {
         fragColor = vec4(1.0);
@@ -61,7 +68,7 @@ void main() {
     vec3 position = getPosition(texCoord, depth);
     vec3 normal = getNormal(texCoord);
 
-    vec3 seed = floor(position * 1024) / 1024;
+    vec3 seed = vec3(gl_FragCoord.xy, time);
 
     vec3 rndVec = vec3(random(seed) * 2.0 - 1.0, random(seed) * 2.0 - 1.0, 0.0);
     vec3 tangent = normalize(rndVec - normal * dot(rndVec, normal));
@@ -75,7 +82,6 @@ void main() {
 
     float occlusion = 0.0;
     for (int i = 0; i < samples; i++) {
-        // TODO: Better sampling.
         vec3 sample = texelFetch(VectorSampler, ivec2(i, 0), 0).rgb;
         sample.xy = sample.xy * 2.0 - 1.0;
 

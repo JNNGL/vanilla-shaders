@@ -38,7 +38,7 @@ void main() {
 
     float ao = texture(AmbientOcclusionSampler, texCoord, 0).r;
     float wSum = 1.0;
-    
+
     vec3 centerNormal = texture(NormalSampler, texCoord).rgb * 2.0 - 1.0;
     for (int x = -2; x <= 2; x++) {
         for (int y = -2; y <= 2; y++) {
@@ -46,8 +46,9 @@ void main() {
             vec2 offset = vec2(float(x), float(y));
             ivec2 coord = ivec2(gl_FragCoord.xy + offset);
             vec3 normal = texelFetch(NormalSampler, coord, 0).rgb * 2.0 - 1.0;
+            float sample = texelFetch(AmbientOcclusionSampler, coord, 0).r;
             if (dot(normal, centerNormal) < 0.8) continue;
-            ao += texelFetch(AmbientOcclusionSampler, coord, 0).r;
+            ao += sample;
             wSum += 1.0;
         }
     }
@@ -55,5 +56,5 @@ void main() {
     vec3 position = getPosition(texCoord, depth);
     float dist = length(position);
 
-    fragColor.rgb *= ao_fog(ao / wSum, dist);
+    fragColor *= ao_fog(ao / wSum, dist);
 }

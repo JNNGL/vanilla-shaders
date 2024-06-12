@@ -10,6 +10,7 @@ uniform vec2 InSize;
 out vec2 texCoord;
 flat out mat4 viewProj;
 flat out mat4 invViewProj;
+flat out float time;
 
 int decodeInt(vec3 ivec) {
     ivec *= 255.0;
@@ -37,12 +38,13 @@ void main() {
         projection[i / 4][i % 4] = decodeFloat(color.rgb);
     }
 
-
     viewProj = projection;
     invViewProj = inverse(viewProj);
 
     vec4 outPos = corners[gl_VertexID];
     gl_Position = outPos;
+
+    time = decodeFloat(texelFetch(DiffuseSampler, ivec2(37, 0), 0).rgb);
 
     texCoord = outPos.xy * 0.5 + 0.5;
 }
