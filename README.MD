@@ -42,6 +42,6 @@ Simple SSAO implementation.
 
 HBAO with temporal amortization.
 
- HBAO                | Simple AO            | Vanilla
+ HBAO                | SSAO                 | Vanilla
 :-------------------:|:--------------------:|:--------------------------:
 ![](images/hbao.png) | ![](images/ssao.png) | ![](images/vanillaao.png)
