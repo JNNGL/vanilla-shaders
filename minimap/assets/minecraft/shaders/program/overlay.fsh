@@ -46,15 +46,8 @@ void main() {
     vec2 uvn11 = mapped * 2.0 - 1.0;
     float dist = dot(uvn11, uvn11);
     if (dist < 0.87) {
-        mapped -= 0.5;
-        mapped.x = -mapped.x;
-        mapped = mapped * mat2_rotate_z(yaw);
-        mapped.x = -mapped.x;
-        mapped = mapped.yx;
-        mapped /= 4.0;
-        mapped += 0.5;
-        mapped -= subBlock / 512.0;
-        fragColor = texture(MapSampler, mapped);
+        mapped = ((mapped - 0.5) * mat2_rotate_z(-yaw)).yx / 4.0 + 0.5;
+        fragColor = texture(MapSampler, mapped - subBlock / 512.0);
     } else if (dist < 0.93) {
         fragColor = vec4(17. / 255.);
         if (dist > 0.89 && dist < 0.92) {
