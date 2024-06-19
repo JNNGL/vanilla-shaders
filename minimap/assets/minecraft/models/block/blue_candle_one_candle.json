@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/template_candle", "textures": {"all": "minecraft:block/blue_candle", "particle": "minecraft:block/blue_candle", "minimap": "block/minimap_25"}}

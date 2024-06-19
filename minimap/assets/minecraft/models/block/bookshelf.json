@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/cube_column", "textures": {"end": "minecraft:block/oak_planks", "side": "minecraft:block/bookshelf", "minimap": "block/minimap_13"}}

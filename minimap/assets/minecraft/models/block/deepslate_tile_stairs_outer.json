@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/outer_stairs", "textures": {"bottom": "minecraft:block/deepslate_tiles", "side": "minecraft:block/deepslate_tiles", "top": "minecraft:block/deepslate_tiles", "minimap": "block/minimap_59"}}

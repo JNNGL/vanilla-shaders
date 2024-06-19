@@ -1,0 +1,1 @@
+{"ambientocclusion": false, "textures": {"texture": "block/chorus_plant", "inside": "block/chorus_plant", "particle": "block/chorus_plant", "minimap": "block/minimap_24"}, "elements": [{"from": [4, 4, 4], "to": [12, 12, 12], "faces": {"north": {"texture": "#inside"}}}, {"from": [8, 8, 8], "to": [8, 8, 8], "faces": {"up": {"uv": [8, 8, 8, 8], "texture": "#minimap"}}}]}

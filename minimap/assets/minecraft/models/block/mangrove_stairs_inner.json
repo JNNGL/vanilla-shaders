@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/inner_stairs", "textures": {"bottom": "minecraft:block/mangrove_planks", "side": "minecraft:block/mangrove_planks", "top": "minecraft:block/mangrove_planks", "minimap": "block/minimap_28"}}

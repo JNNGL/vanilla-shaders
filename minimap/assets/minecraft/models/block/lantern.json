@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/template_lantern", "textures": {"lantern": "minecraft:block/lantern", "minimap": "block/minimap_6"}}

@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/door_top_left", "textures": {"bottom": "minecraft:block/weathered_copper_door_bottom", "top": "minecraft:block/weathered_copper_door_top", "minimap": "block/minimap_56"}}

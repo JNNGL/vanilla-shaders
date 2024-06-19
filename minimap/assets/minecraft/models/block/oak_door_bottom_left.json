@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/door_bottom_left", "textures": {"bottom": "minecraft:block/oak_door_bottom", "top": "minecraft:block/oak_door_top", "minimap": "block/minimap_13"}}

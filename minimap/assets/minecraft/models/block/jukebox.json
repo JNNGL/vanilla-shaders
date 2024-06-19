@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/cube_top", "textures": {"side": "minecraft:block/jukebox_side", "top": "minecraft:block/jukebox_top", "minimap": "block/minimap_10"}}

@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/outer_stairs", "textures": {"bottom": "minecraft:block/sandstone_bottom", "side": "minecraft:block/sandstone", "top": "minecraft:block/sandstone_top", "minimap": "block/minimap_2"}}

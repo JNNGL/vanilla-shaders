@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/cube_column_horizontal", "textures": {"end": "minecraft:block/birch_log_top", "side": "minecraft:block/birch_log", "minimap": "block/minimap_2"}}

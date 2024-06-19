@@ -45,3 +45,7 @@ HBAO with temporal amortization.
  HBAO                | SSAO                 | Vanilla
 :-------------------:|:--------------------:|:--------------------------:
 ![](images/hbao.png) | ![](images/ssao.png) | ![](images/vanillaao.png)
+
+## Minimap
+
+https://github.com/JNNGL/vanilla-shaders/assets/45935949/b1debe51-baaf-4fcd-b649-4ef076078eaf

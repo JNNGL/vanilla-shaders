@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/inner_stairs", "textures": {"bottom": "minecraft:block/mud_bricks", "side": "minecraft:block/mud_bricks", "top": "minecraft:block/mud_bricks", "minimap": "block/minimap_44"}}

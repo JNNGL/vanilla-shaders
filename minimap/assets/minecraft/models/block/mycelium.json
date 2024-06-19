@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/cube_bottom_top", "textures": {"bottom": "minecraft:block/dirt", "side": "minecraft:block/mycelium_side", "top": "minecraft:block/mycelium_top", "minimap": "block/minimap_24"}}

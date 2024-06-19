@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/door_top_right_open", "textures": {"bottom": "minecraft:block/warped_door_bottom", "top": "minecraft:block/warped_door_top", "minimap": "block/minimap_56"}}

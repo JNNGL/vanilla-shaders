@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/stairs", "textures": {"bottom": "minecraft:block/bamboo_planks", "side": "minecraft:block/bamboo_planks", "top": "minecraft:block/bamboo_planks", "minimap": "block/minimap_7"}}

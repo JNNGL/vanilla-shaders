@@ -1,0 +1,148 @@
+{
+    "targets": [
+        "water",
+        "translucent",
+        "itemEntity",
+        "particles",
+        "clouds",
+        "weather",
+        "final",
+        "main",
+        "prevData",
+        { "name": "map", "width": 512, "height": 512 },
+        { "name": "prevMap", "width": 512, "height": 512 },
+        { "name": "shadedMap", "width": 512, "height": 512 }
+    ],
+    "passes": [
+        {
+            "name": "transparency",
+            "intarget": "minecraft:main",
+            "outtarget": "main",
+            "auxtargets": [
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "minecraft:main:depth"
+                },
+                {
+                    "name": "TranslucentSampler",
+                    "id": "translucent"
+                },
+                {
+                    "name": "TranslucentDepthSampler",
+                    "id": "translucent:depth"
+                },
+                {
+                    "name": "ItemEntitySampler",
+                    "id": "itemEntity"
+                },
+                {
+                    "name": "ItemEntityDepthSampler",
+                    "id": "itemEntity:depth"
+                },
+                {
+                    "name": "ParticlesSampler",
+                    "id": "particles"
+                },
+                {
+                    "name": "ParticlesDepthSampler",
+                    "id": "particles:depth"
+                },
+                {
+                    "name": "CloudsSampler",
+                    "id": "clouds"
+                },
+                {
+                    "name": "CloudsDepthSampler",
+                    "id": "clouds:depth"
+                },
+                {
+                    "name": "WeatherSampler",
+                    "id": "weather"
+                },
+                {
+                    "name": "WeatherDepthSampler",
+                    "id": "weather:depth"
+                }
+            ]
+        },
+        {
+            "name": "hide_voxels",
+            "intarget": "main",
+            "outtarget": "final"
+        },
+        {
+            "name": "copy_map",
+            "intarget": "minecraft:main",
+            "outtarget": "map",
+            "auxtargets": [
+                {
+                    "name": "DiffuseDepthSampler",
+                    "id": "minecraft:main:depth"
+                },
+                {
+                    "name": "PreviousSampler",
+                    "id": "prevMap"
+                },
+                {
+                    "name": "PreviousDataSampler",
+                    "id": "prevData"
+                }
+            ]
+        },
+        {
+            "name": "shade",
+            "intarget": "map",
+            "outtarget": "shadedMap",
+            "auxtargets": [
+                {
+                    "name": "PaletteSampler",
+                    "id": "palette",
+                    "width": 1,
+                    "height": 1,
+                    "bilinear": false
+                },
+                {
+                    "name": "DataSampler",
+                    "id": "minecraft:main"
+                }
+            ]
+        },
+        {
+            "name": "copy",
+            "intarget": "map",
+            "outtarget": "prevMap"
+        },
+        {
+            "name": "copy",
+            "intarget": "minecraft:main",
+            "outtarget": "prevData"
+        },
+        {
+            "name": "overlay",
+            "intarget": "final",
+            "outtarget": "main",
+            "auxtargets": [
+                {
+                    "name": "MapSampler",
+                    "id": "shadedMap"
+                },
+                {
+                    "name": "DataSampler",
+                    "id": "minecraft:main"
+                },
+                {
+                    "name": "CursorSampler",
+                    "id": "cursor",
+                    "width": 1,
+                    "height": 1,
+                    "bilinear": false
+                }
+            ]
+        },
+        {
+            "name": "blit",
+            "intarget": "main",
+            "outtarget": "minecraft:main"
+        }
+    ]
+}

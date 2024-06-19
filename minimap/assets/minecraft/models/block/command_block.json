@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/template_command_block", "textures": {"back": "minecraft:block/command_block_back", "front": "minecraft:block/command_block_front", "side": "minecraft:block/command_block_side", "minimap": "block/minimap_26"}}

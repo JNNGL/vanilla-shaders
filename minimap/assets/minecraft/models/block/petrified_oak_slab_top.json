@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/slab_top", "textures": {"bottom": "minecraft:block/oak_planks", "side": "minecraft:block/oak_planks", "top": "minecraft:block/oak_planks", "minimap": "block/minimap_13"}}

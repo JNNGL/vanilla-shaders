@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/wall_inventory", "textures": {"wall": "minecraft:block/cobblestone", "minimap": "block/minimap_11"}}

@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/outer_stairs", "textures": {"bottom": "minecraft:block/polished_diorite", "side": "minecraft:block/polished_diorite", "top": "minecraft:block/polished_diorite", "minimap": "block/minimap_14"}}

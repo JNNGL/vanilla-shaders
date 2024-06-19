@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/cube_column", "textures": {"end": "minecraft:block/ochre_froglight_top", "side": "minecraft:block/ochre_froglight_side", "minimap": "block/minimap_2"}}

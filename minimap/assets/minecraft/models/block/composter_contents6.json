@@ -1,0 +1,1 @@
+{"textures": {"particle": "block/composter_compost", "inside": "block/composter_compost", "minimap": "block/minimap_13"}, "elements": [{"from": [2, 0, 2], "to": [14, 13, 14], "faces": {"up": {"texture": "#inside"}}}, {"from": [8, 8, 8], "to": [8, 8, 8], "faces": {"up": {"uv": [8, 8, 8, 8], "texture": "#minimap"}}}]}
