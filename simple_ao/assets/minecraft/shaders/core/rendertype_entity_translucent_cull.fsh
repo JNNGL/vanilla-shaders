@@ -71,9 +71,8 @@ void main() {
         // 17 - fog end
         // 18-33 - view matrix
         if (pixel.x < 16) {
-            mat4 mvp = ProjMat;
             int index = int(pixel.x);
-            float value = mvp[index / 4][index % 4];
+            float value = ProjMat[index / 4][index % 4];
             fragColor = encodeFloat(value);
         } else if (pixel.x == 16) {
             fragColor = encodeFloat1024(FogStart);
