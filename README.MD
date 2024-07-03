@@ -1,5 +1,5 @@
 Some of my vanilla shaders that I made for fun.<br>
-**You can use them as long as you don't sell them and provide a link to this repo.**
+**You can use[redistribute] them as long as you don't sell them and provide a link to this repo.**
 
 ## GUI Avatars
 
@@ -47,5 +47,8 @@ HBAO with temporal amortization.
 ![](images/hbao.png) | ![](images/ssao.png) | ![](images/vanillaao.png)
 
 ## Minimap
+
+Proof of concept.
+Translucent blocks and fluids aren't supported.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/b1debe51-baaf-4fcd-b649-4ef076078eaf
