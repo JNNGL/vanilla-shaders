@@ -63,6 +63,6 @@ Uses custom encoding to render map-arts with full RGB palette.
 
 ## Custom Blur
 
-Experimented with the new blur post shader.
+Experimented with the new blur post shader. Bugs in the main menu.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/d362eb4d-9347-4cae-bb6f-b16661bab960
