@@ -1,0 +1,19 @@
+{
+    "blend": {
+        "func": "add",
+        "srcrgb": "one",
+        "dstrgb": "zero"
+    },
+    "vertex": "accum_time",
+    "fragment": "accum_time",
+    "attributes": [ "Position" ],
+    "samplers": [
+        { "name": "DiffuseSampler" },
+        { "name": "PrevAccumSampler" },
+        { "name": "MainSampler" },
+        { "name": "PrevMainSampler" }
+    ],
+    "uniforms": [
+        { "name": "Time", "type": "float", "count": 1, "values": [ 0.0 ] }
+    ]
+}

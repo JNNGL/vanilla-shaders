@@ -1,0 +1,126 @@
+{
+    "targets": [
+        "swap",
+        { "name": "prevTime", "width": 1, "height": 1 },
+        { "name": "prevAccum", "width": 2, "height": 1 },
+        { "name": "accumTime", "width": 2, "height": 1 },
+        "prevMain"
+    ],
+    "passes": [
+        {
+            "name": "accum_time",
+            "intarget": "prevTime",
+            "outtarget": "accumTime",
+            "auxtargets": [
+                {
+                    "name": "PrevAccumSampler",
+                    "id": "prevAccum"
+                },
+                {
+                    "name": "MainSampler",
+                    "id": "minecraft:main"
+                },
+                {
+                    "name": "PrevMainSampler",
+                    "id": "prevMain"
+                }
+            ]
+        },
+        {
+            "name": "copy_time",
+            "intarget": "accumTime",
+            "outtarget": "prevTime"
+        },
+        {
+            "name": "copy",
+            "intarget": "accumTime",
+            "outtarget": "prevAccum"
+        },
+        {
+            "name": "copy",
+            "intarget": "minecraft:main",
+            "outtarget": "prevMain"
+        },
+        {
+            "name": "saturate",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "use_linear_filter": true,
+            "auxtargets": [
+                {
+                    "name": "TimeSampler",
+                    "id": "accumTime"
+                }
+            ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "swap",
+            "outtarget": "minecraft:main",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [0.0, 1.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [1.0, 0.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "swap",
+            "outtarget": "minecraft:main",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [0.0, 2.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [2.0, 0.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "swap",
+            "outtarget": "minecraft:main",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [0.0, 4.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [4.0, 0.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "swap",
+            "outtarget": "minecraft:main",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [0.0, 8.0] } ]
+        },
+        {
+            "name": "blur2",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "use_linear_filter": true,
+            "auxtargets": [ { "name": "TimeSampler", "id": "accumTime" } ],
+            "uniforms": [ { "name": "Direction", "values": [8.0, 0.0] } ]
+        },
+        {
+            "name": "blit",
+            "intarget": "swap",
+            "outtarget": "minecraft:main"
+        }
+    ]
+}

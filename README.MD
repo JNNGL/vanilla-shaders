@@ -60,3 +60,9 @@ Uses custom encoding to render map-arts with full RGB palette.
  RGB Maps               | Vanilla Maps
 :----------------------:|:-----------------------:
 ![](images/rgbmaps.png) | ![](images/defmaps.png)
+
+## Custom Blur
+
+Experimented with the new blur post shader.
+
+https://github.com/JNNGL/vanilla-shaders/assets/45935949/d362eb4d-9347-4cae-bb6f-b16661bab960
