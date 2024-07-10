@@ -52,3 +52,11 @@ Proof of concept.
 Translucent blocks and fluids aren't supported.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/b1debe51-baaf-4fcd-b649-4ef076078eaf
+
+## RGB Maps
+
+Uses custom encoding to render map-arts with full RGB palette.
+
+ RGB Maps               | Vanilla Maps
+:----------------------:|:-----------------------:
+![](images/rgbmaps.png) | ![](images/defmaps.png)
