@@ -43,15 +43,15 @@ bool decodeProperties0(in vec2 uv, out ivec2 dim, out int frame_dim,
         return false;
     }
 
-    dim = ivec2(dim_in.xy * vec2(255.0));
+    dim = ivec2(round(dim_in.xy * 255.0));
 
     vec4 frame_data = texture(Sampler0, uv + vec2(x1 * 2.0, 0.0));
     if (!validateProperty2(frame_data)) {
         return false;
     }
 
-    frame_dim = int(frame_data.x * 255.0);
-    nframes = int(frame_data.y * 255.0);
+    frame_dim = int(round(frame_data.x * 255.0));
+    nframes = int(round(frame_data.y * 255.0));
 
     vec4 packed_time = texture(Sampler0, uv + vec2(x1 * 3.0, 0.0));
     if (!validateProperty2(packed_time)) {
