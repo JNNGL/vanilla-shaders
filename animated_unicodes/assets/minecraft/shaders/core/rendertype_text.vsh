@@ -23,7 +23,7 @@ out vec2 texCoord1;
 out float isAnimated;
 
 bool validateProperty2(vec4 data) {
-    return data.zw == vec2(75.0 / 255.0, 1.0 / 255.0);
+    return ivec2(round(data.zw * 255.0)) == ivec2(75, 1);
 }
 
 bool decodeProperties0(in vec2 uv, out ivec2 dim, out int frame_dim,
