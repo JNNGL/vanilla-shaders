@@ -10,11 +10,15 @@ Highly inspired by Spheya's shader (used it as reference).
 
 ## Slightly Controllable Camera
 
+> Requires Fabulous. Native Minecraft version: 1.20.4.
+
 Allows to rotate the camera up to ±6-7 degrees on any axis.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/f94adb60-9467-44ee-8b8c-ec41a3d084c7
 
 ## Motion Blur
+
+> Requires Fabulous. Native Minecraft version: 1.20.4.
 
 Adds motion blur.
 
@@ -22,13 +26,19 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/46529119-775c-49f7-b8c1
 
 ## Bloom
 
+> Requires Fabulous. Native Minecraft version: 1.20.4.
+
 ![Bloom](images/bloom.png)
 
 ## Animated Unicodes
 
+> Native Minecraft version: 1.20.4.
+
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/66c9a155-ea97-4c16-823b-564b883db5aa
 
 ## Simple AO
+
+> Requires Fabulous. Native Minecraft version: 1.20.4.
 
 Simple SSAO implementation.
 
@@ -40,6 +50,8 @@ Simple SSAO implementation.
 
 ## Horizon-Based AO
 
+> Requires Fabulous. Native Minecraft version: 1.20.4.
+
 HBAO with temporal amortization.
 
  HBAO                | SSAO                 | Vanilla
@@ -48,12 +60,16 @@ HBAO with temporal amortization.
 
 ## Minimap
 
+> Requires Fabulous. Native Minecraft version: 1.20.4.
+
 Proof of concept.
 Translucent blocks and fluids aren't supported.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/b1debe51-baaf-4fcd-b649-4ef076078eaf
 
 ## RGB Maps
+
+> Native Minecraft version: 1.21.
 
 Uses custom encoding to render map-arts with full RGB palette.
 
@@ -62,6 +78,8 @@ Uses custom encoding to render map-arts with full RGB palette.
 ![](images/rgbmaps.png) | ![](images/defmaps.png)
 
 ## Custom Blur
+
+> Native Minecraft version: 1.21.
 
 Experimented with the new blur post shader. Bugs in the main menu.
 
