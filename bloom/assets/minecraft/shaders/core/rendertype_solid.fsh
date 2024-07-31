@@ -18,7 +18,7 @@ out vec4 fragColor;
 
 void main() {
     vec4 color = texture(Sampler0, texCoord0);
-    if (color.a != 251. / 255.) color *= vertexColor;
+    if (color.a < 230.0 / 255.0 || color.a > 250.0 / 255.0) color *= vertexColor;
     color *= ColorModulator;
     fragColor = linear_fog(color, vertexDistance, FogStart, FogEnd, FogColor);
 }

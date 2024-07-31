@@ -8,9 +8,9 @@
         "weather",
         "swap",
         "emissive",
-        "sample0",
-        "sample1",
-        "final"
+        "final",
+        "a", "b", "c", "d", "e", "f", "g",
+        "f1", "e1", "d1", "c1", "b1", "a1", "bloom"
     ],
     "passes": [
         {
@@ -72,7 +72,7 @@
         {
             "name": "downsample",
             "intarget": "emissive",
-            "outtarget": "sample1",
+            "outtarget": "a",
             "uniforms": [
                 {
                     "name": "Iteration",
@@ -82,8 +82,8 @@
         },
         {
             "name": "downsample",
-            "intarget": "sample1",
-            "outtarget": "sample0",
+            "intarget": "a",
+            "outtarget": "b",
             "uniforms": [
                 {
                     "name": "Iteration",
@@ -93,8 +93,8 @@
         },
         {
             "name": "downsample",
-            "intarget": "sample0",
-            "outtarget": "sample1",
+            "intarget": "b",
+            "outtarget": "c",
             "uniforms": [
                 {
                     "name": "Iteration",
@@ -104,8 +104,8 @@
         },
         {
             "name": "downsample",
-            "intarget": "sample1",
-            "outtarget": "sample0",
+            "intarget": "c",
+            "outtarget": "d",
             "uniforms": [
                 {
                     "name": "Iteration",
@@ -115,8 +115,8 @@
         },
         {
             "name": "downsample",
-            "intarget": "sample0",
-            "outtarget": "sample1",
+            "intarget": "d",
+            "outtarget": "e",
             "uniforms": [
                 {
                     "name": "Iteration",
@@ -125,57 +125,143 @@
             ]
         },
         {
-            "name": "upsample",
-            "intarget": "sample1",
-            "outtarget": "sample0",
+            "name": "downsample",
+            "intarget": "e",
+            "outtarget": "f",
             "uniforms": [
                 {
                     "name": "Iteration",
-                    "values": [ 5.0 ]
+                    "values": [ 6.0 ]
+                }
+            ]
+        },
+        {
+            "name": "downsample",
+            "intarget": "f",
+            "outtarget": "g",
+            "uniforms": [
+                {
+                    "name": "Iteration",
+                    "values": [ 7.0 ]
                 }
             ]
         },
         {
             "name": "upsample",
-            "intarget": "sample0",
-            "outtarget": "sample1",
+            "intarget": "g",
+            "outtarget": "f1",
+            "uniforms": [
+                {
+                    "name": "Iteration",
+                    "values": [ 7.0 ]
+                }
+            ],
+            "auxtargets": [
+                {
+                    "name": "DownsampledSampler",
+                    "id": "f"
+                }
+            ]
+        },
+        {
+            "name": "upsample",
+            "intarget": "f1",
+            "outtarget": "e1",
+            "uniforms": [
+                {
+                    "name": "Iteration",
+                    "values": [ 6.0 ]
+                }
+            ],
+            "auxtargets": [
+                {
+                    "name": "DownsampledSampler",
+                    "id": "e"
+                }
+            ]
+        },
+        {
+            "name": "upsample",
+            "intarget": "e1",
+            "outtarget": "d1",
+            "uniforms": [
+                {
+                    "name": "Iteration",
+                    "values": [ 5.0 ]
+                }
+            ],
+            "auxtargets": [
+                {
+                    "name": "DownsampledSampler",
+                    "id": "d"
+                }
+            ]
+        },
+        {
+            "name": "upsample",
+            "intarget": "d1",
+            "outtarget": "c1",
             "uniforms": [
                 {
                     "name": "Iteration",
                     "values": [ 4.0 ]
                 }
-            ]
-        },
-        {
-            "name": "upsample",
-            "intarget": "sample1",
-            "outtarget": "sample0",
-            "uniforms": [
+            ],
+            "auxtargets": [
                 {
-                    "name": "Iteration",
-                    "values": [ 3.0 ]
+                    "name": "DownsampledSampler",
+                    "id": "c"
                 }
             ]
         },
         {
             "name": "upsample",
-            "intarget": "sample0",
-            "outtarget": "sample1",
+            "intarget": "c1",
+            "outtarget": "b1",
+            "uniforms": [
+                {
+                    "name": "Iteration",
+                    "values": [ 3.0 ]
+                }
+            ],
+            "auxtargets": [
+                {
+                    "name": "DownsampledSampler",
+                    "id": "b"
+                }
+            ]
+        },
+        {
+            "name": "upsample",
+            "intarget": "b1",
+            "outtarget": "a1",
             "uniforms": [
                 {
                     "name": "Iteration",
                     "values": [ 2.0 ]
                 }
+            ],
+            "auxtargets": [
+                {
+                    "name": "DownsampledSampler",
+                    "id": "a"
+                }
             ]
         },
         {
             "name": "upsample",
-            "intarget": "sample1",
-            "outtarget": "sample0",
+            "intarget": "a1",
+            "outtarget": "bloom",
             "uniforms": [
                 {
                     "name": "Iteration",
                     "values": [ 1.0 ]
+                }
+            ],
+            "auxtargets": [
+                {
+                    "name": "DownsampledSampler",
+                    "id": "emissive"
                 }
             ]
         },
@@ -186,7 +272,7 @@
             "auxtargets": [
                 {
                     "name": "BloomSampler",
-                    "id": "sample0"
+                    "id": "bloom"
                 },
                 {
                     "name": "EmissiveSampler",

@@ -23,7 +23,7 @@ void main() {
     if (color.a < 0.1) {
         discard;
     }
-    bool notEmissive = (color.a != 251. / 255.);
+    bool notEmissive = color.a < 230.0 / 255.0 || color.a > 250.0 / 255.0;
     if (notEmissive) color *= vertexColor;
     color *= ColorModulator;
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
