@@ -23,8 +23,13 @@ void main() {
     if (color.a < 0.1) {
         discard;
     }
-    bool notEmissive = color.a < 230.0 / 255.0 || color.a > 250.0 / 255.0;
-    if (notEmissive) color *= vertexColor;
+    vec4 lodColor = textureLod(Sampler0, texCoord0, 0);
+    bool notEmissive = lodColor.a < 230.0 / 255.0 || lodColor.a > 250.0 / 255.0;
+    if (notEmissive) {
+        color *= vertexColor;
+        if (color.a >= 229.0 / 255.0 && color.a <= 251 / 255.0)
+            color.a = color.a > 240.0 / 255.0 ? 251.0 / 255.0 : 229.0 / 255.0;
+    }
     color *= ColorModulator;
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
     if (notEmissive) color *= lightMapColor;
