@@ -41,9 +41,13 @@
                     "id": "normals"
                 },
                 {
-                    "name": "VectorSampler",
-                    "id": "ssao_samples",
-                    "width": 64,
+                    "name": "FrameSampler",
+                    "id": "prevAo"
+                },
+                {
+                    "name": "NoiseSampler",
+                    "id": "blue_noise",
+                    "width": 1,
                     "height": 1,
                     "bilinear": false
                 }

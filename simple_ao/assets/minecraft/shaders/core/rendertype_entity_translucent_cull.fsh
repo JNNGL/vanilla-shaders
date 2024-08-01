@@ -70,6 +70,8 @@ void main() {
         // 16 - fog start
         // 17 - fog end
         // 18-33 - view matrix
+        // 34-36 - position
+        // 37 - game time
         if (pixel.x < 16) {
             int index = int(pixel.x);
             float value = ProjMat[index / 4][index % 4];
@@ -80,7 +82,7 @@ void main() {
             fragColor = encodeFloat1024(FogEnd);
         } else if (pixel.x < 34) {
             int index = int(pixel.x - 18);
-            float value = transpose(mat4(IViewRotMat))[index / 4][index % 4];
+            float value = ModelViewMat[index / 4][index % 4];
             fragColor = encodeFloat(value);
         } else if (pixel.x < 37) {
             fragColor = encodeFloat1024(pos[int(pixel.x - 34)]);

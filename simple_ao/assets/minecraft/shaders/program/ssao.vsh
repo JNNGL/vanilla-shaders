@@ -3,6 +3,7 @@
 in vec4 Position;
 
 uniform sampler2D DiffuseSampler;
+uniform sampler2D FrameSampler;
 
 uniform mat4 ProjMat;
 uniform vec2 InSize;
@@ -44,7 +45,7 @@ void main() {
     vec4 outPos = corners[gl_VertexID];
     gl_Position = outPos;
 
-    time = decodeFloat(texelFetch(DiffuseSampler, ivec2(37, 0), 0).rgb);
+    time = round(texelFetch(FrameSampler, ivec2(37, 0), 0).r * 255.0);
 
     texCoord = outPos.xy * 0.5 + 0.5;
 }

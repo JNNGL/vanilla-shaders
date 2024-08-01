@@ -26,6 +26,12 @@ vec3 reconstructPosition(vec2 uv, float z) {
 }
 
 void main() {
+    if (ivec2(gl_FragCoord.xy) == ivec2(37, 0)) {
+        int x = int(texelFetch(PreviousDiffuseSampler, ivec2(37, 0), 0).r * 255.0 + 1.0) % 4;
+        fragColor = vec4(float(x) / 255.0, 0.0, 0.0, 1.0);
+        return;
+    }
+    
     if (int(floor(gl_FragCoord.y)) == 0) {
         fragColor = texelFetch(DiffuseSampler, ivec2(gl_FragCoord.xy), 0);
         return;

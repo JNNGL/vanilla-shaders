@@ -38,7 +38,7 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/66c9a155-ea97-4c16-823b
 
 ## Simple AO
 
-> Requires Fabulous. Native Minecraft version: 1.20.4.
+> Requires Fabulous. Native Minecraft version: 1.21.
 
 Simple SSAO implementation.
 

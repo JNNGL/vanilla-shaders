@@ -40,7 +40,7 @@ void main() {
     vec4 col = texture(Sampler0, UV0);
     marker = col.rgb == vec3(76, 195, 86) / 255 ? 1.0 : 0.0;
 
-    vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
+    vertexDistance = fog_distance(IViewRotMat * Position, FogShape);
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
     lightMapColor = texelFetch(Sampler2, UV2 / 16, 0);
     overlayColor = texelFetch(Sampler1, UV1, 0);
