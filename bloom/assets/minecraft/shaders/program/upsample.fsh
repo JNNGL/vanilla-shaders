@@ -4,11 +4,8 @@ uniform sampler2D DiffuseSampler;
 uniform sampler2D DownsampledSampler;
 uniform vec2 OutSize;
 
-in vec2 texCoord;
 flat in ivec2 inRes;
 flat in ivec2 outRes;
-flat in float scale;
-flat in float prevScale;
 
 out vec4 fragColor;
 
@@ -45,6 +42,8 @@ void main() {
         fragColor = vec4(0.0);
         return;
     }
+
+    vec2 texCoord = gl_FragCoord.xy / vec2(outRes);
 
     float x = 1.0 / inRes.x;
     float y = 1.0 / inRes.y;
