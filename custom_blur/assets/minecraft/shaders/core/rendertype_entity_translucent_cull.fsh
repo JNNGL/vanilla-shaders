@@ -1,3 +1,6 @@
+// custom blur
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 150
 
 #moj_import <fog.glsl>

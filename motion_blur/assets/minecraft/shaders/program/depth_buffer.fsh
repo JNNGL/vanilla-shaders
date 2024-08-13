@@ -1,3 +1,6 @@
+// motion blur
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 330
 
 uniform sampler2D DepthSampler0;

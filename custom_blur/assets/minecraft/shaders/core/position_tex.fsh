@@ -1,3 +1,6 @@
+// custom blur
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 150
 
 uniform sampler2D Sampler0;

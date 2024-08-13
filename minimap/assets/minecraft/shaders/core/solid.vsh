@@ -1,3 +1,6 @@
+// minimap
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 150
 
 #define X_RESOLUTION 512

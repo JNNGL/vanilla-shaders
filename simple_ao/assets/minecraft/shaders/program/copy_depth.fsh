@@ -1,3 +1,6 @@
+// simple ao
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 330
 
 uniform sampler2D DiffuseDepthSampler;

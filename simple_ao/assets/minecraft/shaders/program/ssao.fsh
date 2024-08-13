@@ -1,3 +1,6 @@
+// simple ao
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 330
 
 uniform sampler2D DiffuseSampler;
@@ -58,7 +61,7 @@ void main() {
     vec3 normal = getNormal(texCoord);
 
     vec3 rndVec = vec3(random(time).xy * 2.0 - 1.0, 0.0);
-    vec3 tangent = normalize(rndVec - normal * dot(rndVec, normal));
+    vec3 tangent = normalize(rndVec - normal);
     vec3 bitangent = cross(normal, tangent);
     mat3 tbn = mat3(tangent, bitangent, normal);
 
