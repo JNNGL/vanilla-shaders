@@ -84,3 +84,11 @@ Uses custom encoding to render map-arts with full RGB palette.
 Experimented with the new blur post shader. Bugs in the main menu.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/d362eb4d-9347-4cae-bb6f-b16661bab960
+
+## Lightmap uniforms
+
+> Native Minecraft version: 24w33a.
+
+Example of passing data to core shaders through the lightmap.
+
+![](images/lightmap_uniforms.png)
