@@ -106,6 +106,13 @@
                 {
                     "name": "PreviousDataSampler",
                     "id": "previous"
+                },
+                {
+                    "name": "NoiseSampler",
+                    "id": "blue_noise",
+                    "width": 1,
+                    "height": 1,
+                    "bilinear": false
                 }
             ]
         },

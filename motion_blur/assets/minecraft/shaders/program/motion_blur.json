@@ -10,7 +10,8 @@
     "samplers": [
         { "name": "DiffuseSampler" },
         { "name": "DiffuseDepthSampler" },
-        { "name": "PreviousDataSampler" }
+        { "name": "PreviousDataSampler" },
+        { "name": "NoiseSampler" }
     ],
     "uniforms": [
         { "name": "OutSize", "type": "float",     "count": 2,  "values": [ 1.0, 1.0 ] }

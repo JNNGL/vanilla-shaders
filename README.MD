@@ -20,10 +20,6 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/f94adb60-9467-44ee-8b8c
 
 > Requires Fabulous. Native Minecraft version: 1.20.4.
 
-Adds motion blur.
-
-https://github.com/JNNGL/vanilla-shaders/assets/45935949/46529119-775c-49f7-b8c1-1ae2f371f452
-
 ## Bloom
 
 > Requires Fabulous. Native Minecraft version: 1.21.

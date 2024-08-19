@@ -6,6 +6,7 @@
 uniform sampler2D DiffuseSampler;
 uniform sampler2D DiffuseDepthSampler;
 uniform sampler2D PreviousDataSampler;
+uniform sampler2D NoiseSampler;
 
 uniform vec2 OutSize;
 
@@ -17,6 +18,11 @@ flat in mat3 prevViewMat;
 flat in vec3 cameraOffset;
 
 out vec4 fragColor;
+
+vec3 random() {
+    ivec2 coord = ivec2(mod(gl_FragCoord.xy, 512));
+    return texelFetch(NoiseSampler, coord, 0).xyz;
+}
 
 vec3 toWorldSpace(vec2 uv, float z) {
     vec4 clip = vec4(uv, z, 1.0) * 2.0 - 1.0;
@@ -46,6 +52,7 @@ void main() {
 
     vec3 color = vec3(0.0);
     vec2 sampleCoord = texCoord - velocity * 0.5 * float(numSamples);
+    sampleCoord += velocity * random().x;
 
     vec2 markerCutoff = vec2(0.0, 1.5 / OutSize.y);
     for (int i = 0; i < numSamples; ++i, sampleCoord += velocity) {
