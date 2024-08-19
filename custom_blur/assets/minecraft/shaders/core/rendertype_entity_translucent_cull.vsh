@@ -46,10 +46,10 @@ void main() {
         vec2 bottomLeftCorner = vec2(-1.0);
         vec2 topRightCorner = vec2(1.0, -0.9);
         switch (gl_VertexID % 4) {
-            case 0: gl_Position = vec4(bottomLeftCorner.x, topRightCorner.y,   0, 1); break;
-            case 1: gl_Position = vec4(bottomLeftCorner.x, bottomLeftCorner.y, 0, 1); break;
-            case 2: gl_Position = vec4(topRightCorner.x,   bottomLeftCorner.y, 0, 1); break;
-            case 3: gl_Position = vec4(topRightCorner.x,   topRightCorner.y,   0, 1); break;
+            case 0: gl_Position = vec4(bottomLeftCorner.x, topRightCorner.y,   -1, 1); break;
+            case 1: gl_Position = vec4(bottomLeftCorner.x, bottomLeftCorner.y, -1, 1); break;
+            case 2: gl_Position = vec4(topRightCorner.x,   bottomLeftCorner.y, -1, 1); break;
+            case 3: gl_Position = vec4(topRightCorner.x,   topRightCorner.y,   -1, 1); break;
         }
     }
 }
