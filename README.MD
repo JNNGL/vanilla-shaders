@@ -88,3 +88,15 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/d362eb4d-9347-4cae-bb6f
 Example of passing data to core shaders through the lightmap.
 
 ![](images/lightmap_uniforms.png)
+
+## GUI Player Models Base
+
+A basic setup for player model rendering using player heads inside GUIs.
+
+![](images/gui_player_models_base.png)
+
+## Fancy Player Models
+
+The same concept as in the base pack, but with ambient occlusion, antialiasing and specular reflections.
+
+![](images/fancy_player_models.png)
