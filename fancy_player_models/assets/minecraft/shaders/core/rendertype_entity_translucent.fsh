@@ -300,7 +300,7 @@ void main() {
             vec3 itNormal = second.normal;
             vec3 secondary = direction;
             vec4 sampleColor = second.albedo;
-            bool termiated = false;
+            bool terminated = false;
 
             vec3 directionalLight = directional(itNormal, lightDir);
 
@@ -308,7 +308,7 @@ void main() {
                 secondary = refract(secondary, second.normal, 1.0 / 1.3);
                 second = rayTrace(second.position + secondary * 0.02, secondary, FAR);
                 if (second.t >= FAR) {
-                    termiated = true;
+                    terminated = true;
                     alpha = sampleColor.a;
                     break;
                 }
@@ -319,7 +319,7 @@ void main() {
                 itNormal = second.normal;
             }
             
-            if (!termiated) {
+            if (!terminated) {
                 secondary = cosineSampleHemisphere(abs(second.normal) * sign(itNormal), seed);
                 second = rayTrace(second.position + secondary * 0.01, secondary, FAR);
                 sampleColor *= second.albedo;
