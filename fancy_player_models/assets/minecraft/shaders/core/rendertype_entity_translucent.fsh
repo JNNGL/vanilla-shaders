@@ -219,9 +219,8 @@ const vec3 blueNoise[] = vec3[](
 );
 
 vec3 random(inout float v) {
-    const vec2 offsets[] = vec2[](vec2(1, 0), vec2(0, 1), vec2(-1, 0), vec2(0, -1), vec2(1, 1), vec2(1, -1), vec2(-1, 1), vec2(-1, -1));
-    ivec2 coord = ivec2(mod(gl_FragCoord.xy + offsets[int(v) % 8] * round((v += 1.0) / 8.0), 16.0));
-    vec3 noise = blueNoise[coord.y * 16 + coord.x];
+    ivec2 coord = ivec2(mod(gl_FragCoord.xy + vec2(cos(v * 2.399963), sin(v * 2.399963)) * (v += 1.0), 16.0));
+    vec3 noise = blueNoise[(coord.y * 16 + coord.x) % 256];
     return mod(noise, 1.0);
 }
 
