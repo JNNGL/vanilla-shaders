@@ -253,10 +253,6 @@ vec3 directional(vec3 n, vec3 l) {
     return vec3((dot(n, l) * 0.6 + 0.4) * 1.1);
 }
 
-vec3 acesFilm(vec3 x) {
-    return clamp((x * (2.51 * x + 0.03)) / (x * (2.43 * x + 0.59) + 0.14), 0.0, 1.0);
-}
-
 void main() {
     if (renderModel > 0) {
         if (quadId != 3) discard;
@@ -338,7 +334,6 @@ void main() {
         accum /= wSum;
         accum = mix(accum, reflectionColor, reflectance);
 
-        fragColor.rgb = acesFilm(fragColor.rgb);
         fragColor = sqrt(accum);
         fragColor.a = hits / total;
     } else {
