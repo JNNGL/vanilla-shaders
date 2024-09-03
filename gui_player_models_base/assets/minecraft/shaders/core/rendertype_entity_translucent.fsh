@@ -68,7 +68,7 @@ bool boxIntersect(inout intersection it, vec3 origin, vec3 direction, vec3 posit
     it.t = it.inside ? far : near;
     it.t2 = far;
     it.normal = (it.inside ? step(tMax, vec3(far)) : step(vec3(near), tMin)) * -sign(direction);
-    it.normal2 = step(tMax, vec3(far));
+    it.normal2 = step(tMax, vec3(far)) * -sign(direction);
     it.position = direction * it.t + origin;
     return true;
 }
