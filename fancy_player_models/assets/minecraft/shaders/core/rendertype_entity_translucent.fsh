@@ -293,7 +293,7 @@ void main() {
             reflectionColor *= vec4(directional(its[0].normal, lightDir), 1.0) * 3.0;
         }
 
-        float seed = round(length(its[0].position));
+        float seed = 0.0;
         for (int i = 0; i < 24; i++) {
             intersection second = its[i % int(hits)];
             float alpha = 1.0;
