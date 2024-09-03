@@ -1,6 +1,9 @@
 // Fancy Player Models
 // https://github.com/JNNGL/vanilla-shaders
 
+// Fancy Player Models
+// https://github.com/JNNGL/vanilla-shaders
+
 #version 330
 
 #moj_import <fog.glsl>
@@ -194,17 +197,19 @@ intersection rayTrace(vec3 origin, vec3 direction, float far) {
     );
     */
 
-    const mat3 rightArmT = mat3(cos(radians(5.0)), -sin(radians(5.0)), 0, sin(radians(5.0)), cos(radians(5.0)), 0, 0, 0, 1);
-    const mat3 leftArmT = mat3(cos(radians(-5.0)), -sin(radians(-5.0)), 0, sin(radians(-5.0)), cos(radians(-5.0)), 0, 0, 0, 1);
+    const float rightArmR = radians(6.0);
+    const float leftArmR = radians(-6.0);
+    const mat3 rightArmT = mat3(cos(rightArmR), -sin(rightArmR), 0, sin(rightArmR), cos(rightArmR), 0, 0, 0, 1);
+    const mat3 leftArmT = mat3(cos(leftArmR), -sin(leftArmR), 0, sin(leftArmR), cos(leftArmR), 0, 0, 0, 1);
 
-    intersection it = intersection(far, far, false, vec3(0.0), vec3(0.0), vec3(0.0), vec2(0.0), vec4(1.0, 1.0, 1.0, 0.0));
+    intersection it = intersection(far, far, false, vec3(0.0), vec3(0.0), vec3(0.0), vec2(0.0), vec4(1.0, 1.0, 1.0, 1.0));
     box(it, origin, direction, mat3(1.0), vec3(0, 6, 0), vec3(4, 6, 2) + 0.25, bodyUV, 1);
-    box(it, origin, direction, leftArmT, vec3(-6.5, 5.5, 0), vec3(1.5, 6, 2) + 0.25, leftArmUV, 1);
-    box(it, origin, direction, rightArmT, vec3(6.5, 5.5, 0), vec3(1.5, 6, 2) + 0.25, rightArmUV, 1);
+    box(it, origin, direction, leftArmT, vec3(-6.725, 5.5, 0), vec3(1.5, 6, 2) + 0.25, leftArmUV, 1);
+    box(it, origin, direction, rightArmT, vec3(6.725, 5.5, 0), vec3(1.5, 6, 2) + 0.25, rightArmUV, 1);
     box(it, origin, direction, mat3(1.0), vec3(0, 16, 0), vec3(4, 4, 4) + 0.5, headUV, 1);
     box(it, origin, direction, mat3(1.0), vec3(0, 6, 0), vec3(4, 6, 2), bodyUV, 0);
-    box(it, origin, direction, leftArmT, vec3(-6.5, 5.5, 0), vec3(1.5, 6, 2), leftArmUV, 0);
-    box(it, origin, direction, rightArmT, vec3(6.5, 5.5, 0), vec3(1.5, 6, 2), rightArmUV, 0);
+    box(it, origin, direction, leftArmT, vec3(-6.725, 5.5, 0), vec3(1.5, 6, 2), leftArmUV, 0);
+    box(it, origin, direction, rightArmT, vec3(6.725, 5.5, 0), vec3(1.5, 6, 2), rightArmUV, 0);
     box(it, origin, direction, mat3(1.0), vec3(0, 16, 0), vec3(4, 4, 4), headUV, 0);
     return it;
 }
@@ -241,7 +246,7 @@ mat3 rotateY(float rad) {
 
 void sample(vec2 uv, vec3 origin, vec3 side, vec3 up, vec3 direction, inout intersection its[4], inout float hits, inout float total) {
     total += 1.0;
-    origin += 10.0 * (side * uv.x - up * uv.y);
+    origin += 10.0 * (side * uv.x * 0.975 - up * uv.y);
     intersection it = rayTrace(origin, direction, FAR);
     if (it.t < FAR) {
         its[int(hits)] = it;
@@ -250,7 +255,11 @@ void sample(vec2 uv, vec3 origin, vec3 side, vec3 up, vec3 direction, inout inte
 }
 
 vec3 directional(vec3 n, vec3 l) {
-    return vec3((dot(n, l) * 0.6 + 0.4) * 1.1);
+    return vec3((dot(n, l) * 0.6 + 0.45) * 1.1);
+}
+
+vec3 acesFilm(vec3 x) {
+    return clamp((x * (2.51 * x + 0.03)) / (x * (2.43 * x + 0.59) + 0.14), 0.0, 1.0);
 }
 
 void main() {
@@ -282,19 +291,19 @@ void main() {
 
         vec3 lightDir = cameraRot * normalize(vec3(0.0, 1.0, 0.5));
 
-        vec3 refracted = refract(direction, its[0].normal, 1.0 / 1.5);
         float cosT = dot(-direction, its[0].normal);
-        float reflectance = its[0].albedo.a < 1.0 ? (0.67 * sqrt(1.0 - cosT * cosT) > 1.0 ? 1.0 : 0.04 + 0.96 * pow(1.0 - cosT, 5.0)) : 0.0;
+        float reflectance = its[0].albedo.a < 1.0 ? 0.05 + 0.95 * pow(1.0 - cosT, 5.0) : 0.0;
         vec3 reflected = reflect(direction, its[0].normal);
         intersection reflection = rayTrace(its[0].position + reflected * 0.02, reflected, FAR);
         vec4 reflectionColor = its[0].albedo * reflection.albedo;
         if (reflection.t >= FAR) {
-            reflectionColor *= max(0.4, sign(dot(reflected, lightDir))) * 2.0;
+            reflectionColor *= vec4(directional(its[0].normal, lightDir), 1.0) * 3.0;
         }
 
-        float seed = 0.0;
-        for (int i = 0; i < 32; i++) {
+        float seed = round(length(its[0].position));
+        for (int i = 0; i < 24; i++) {
             intersection second = its[i % int(hits)];
+            float alpha = 1.0;
             vec3 itNormal = second.normal;
             vec3 secondary = direction;
             vec4 sampleColor = second.albedo;
@@ -302,15 +311,19 @@ void main() {
 
             vec3 directionalLight = directional(itNormal, lightDir);
 
-            if (sampleColor.a < 1.0) {
-                sampleColor = mix(sampleColor, vec4(1.0), sampleColor.a);
-                secondary = normalize(refracted + 0.14 * cosineSampleHemisphere(-second.normal, seed));
+            for (int k = 0; k < 3 && sampleColor.a < 1.0; k++) {
+                secondary = refract(secondary, second.normal, 1.0 / 1.3);
                 second = rayTrace(second.position + secondary * 0.02, secondary, FAR);
-                sampleColor *= second.albedo;
                 if (second.t >= FAR) {
-                    sampleColor *= max(0.1, sign(dot(secondary, lightDir))) * 2.0;
                     termiated = true;
+                    alpha = sampleColor.a;
+                    break;
                 }
+
+                vec4 refractedColor = sampleColor * second.albedo;
+                sampleColor = mix(sampleColor, refractedColor, 1.0 - sampleColor.a);
+                sampleColor.a = second.albedo.a;
+                itNormal = second.normal;
             }
             
             if (!termiated) {
@@ -319,6 +332,7 @@ void main() {
                 sampleColor *= second.albedo;
                 if (second.t >= FAR) sampleColor.rgb *= directionalLight;
                 else {
+                    vec3 lNormal = second.normal;
                     secondary = cosineSampleHemisphere(abs(second.normal) * sign(itNormal), seed);
                     second = rayTrace(second.position + secondary * 0.01, secondary, FAR);
                     if (second.t >= FAR) sampleColor.rgb *= directionalLight;
@@ -326,16 +340,16 @@ void main() {
                 }
             }
 
-            sampleColor.a = 1.0;
+            sampleColor.a = alpha;
             accum += sampleColor;
             wSum += 1.0;
         }
 
         accum /= wSum;
-        accum = mix(accum, reflectionColor, reflectance);
+        accum.rgb = mix(accum.rgb, reflectionColor.rgb, reflectance);
 
-        fragColor = sqrt(accum);
-        fragColor.a = hits / total;
+        fragColor.rgb = sqrt(accum.rgb);
+        fragColor.a = accum.a * (hits / total);
     } else {
         vec4 color = texture(Sampler0, texCoord0);
         if (color.a < 0.1) {
