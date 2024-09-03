@@ -1,9 +1,6 @@
 // Fancy Player Models
 // https://github.com/JNNGL/vanilla-shaders
 
-// Fancy Player Models
-// https://github.com/JNNGL/vanilla-shaders
-
 #version 330
 
 #moj_import <fog.glsl>
