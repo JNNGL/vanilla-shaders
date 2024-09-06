@@ -46,7 +46,7 @@ void main() {
     normal = Normal;
 
     if (renderModel > 0) {
-        const float inflate = 20.0;
+        const float inflate = 27.0;
 
         texCoord0 = uvs[gl_VertexID % 4];
         position.xy += (texCoord0 * 2.0 - 1.0) * inflate;

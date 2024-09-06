@@ -47,7 +47,7 @@ void main() {
 
     if (renderModel > 0) {
         texCoord0 = uvs[gl_VertexID % 4];
-        position.xy += (texCoord0 * 2.0 - 1.0) * 20;
+        position.xy += (texCoord0 * 2.0 - 1.0) * 27;
     }
 
     gl_Position = ProjMat * ModelViewMat * vec4(position, 1.0);

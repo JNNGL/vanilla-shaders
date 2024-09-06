@@ -3,8 +3,8 @@
   "gui_light": "side",
   "display": {
     "gui": {
-      "translation": [0, 8, 0],
-      "scale": [2, 2, 2]
+      "translation": [0, 0, 0],
+      "scale": [0, 0, 0]
     }
   }
 }
