@@ -37,7 +37,7 @@ void main() {
     texCoord0 = UV0;
 
     if (dataQuad > 0) {
-        if (gl_VertexID >= 144 || ChunkOffset == vec3(0.0)) {
+        if (ChunkOffset == vec3(0.0)) {
             gl_Position = vec4(10.0, 10.0, 10.0, 1.0);
             return;
         }
