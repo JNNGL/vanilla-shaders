@@ -106,7 +106,7 @@ void main() {
         uv += (vec2(u, v) * vec2(frame_dim) + 1.0) / vec2(size);
     }
 
-    vertexDistance = fog_distance(ModelViewMat, IViewRotMat * Position, FogShape);
+    vertexDistance = fog_distance(IViewRotMat * Position, FogShape);
     vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
     texCoord0 = UV0;
     texCoord1 = uv;
