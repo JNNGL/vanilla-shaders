@@ -42,7 +42,7 @@ void main() {
         return;
     }
     
-    vec3 offset = position - prevPosition;
+    vec3 offset = mod(position - prevPosition + 8.0, 16.0) - 8.0;
 
     vec3 view = reconstructPosition(texCoord, depth);
     vec4 clipSpace = prevProjViewMat * vec4(view - offset, 1.0);
