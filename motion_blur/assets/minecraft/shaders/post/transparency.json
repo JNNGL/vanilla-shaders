@@ -63,7 +63,6 @@
             ]
         },
         {
-            "__comment": "For compatibility with Sodium",
             "name": "depth_buffer",
             "intarget": "minecraft:main",
             "outtarget": "depth",

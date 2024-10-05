@@ -86,6 +86,6 @@ void main() {
         prevPosition[i] = decodeFloat1024(color.rgb);
     }
 
-    cameraOffset = position - prevPosition;
+    cameraOffset = mod(position - prevPosition + 8.0, 16.0) - 8.0;
     texCoord = outPos.xy * 0.5 + 0.5;
 }
