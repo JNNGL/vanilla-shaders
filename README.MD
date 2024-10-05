@@ -46,7 +46,7 @@ Simple SSAO implementation.
 
 ## Horizon-Based AO
 
-> Requires Fabulous. Native Minecraft version: 1.20.4.
+> Requires Fabulous. Native Minecraft version: 1.21.
 
 HBAO with temporal amortization.
 
