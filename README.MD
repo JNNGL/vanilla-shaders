@@ -100,3 +100,20 @@ A basic setup for player model rendering using player heads inside GUIs.
 The same concept as in the base pack, but with ambient occlusion, antialiasing and specular reflections.
 
 ![](images/fancy_player_models.png)
+
+## Fixed FOV
+
+> Native Minecraft version: 1.21.
+
+Forcibly sets the player's FOV to a fixed value.
+
+## Dynamic FOV
+
+> Native Minecraft version: 1.21.
+
+Allows to dynamically change the player's FOV from a modded server.<br>
+Send the time update packet with the world age calculated as `(long) Math.floor(((float) fov + 0.5F) / 180.0F * 24000.0F)` to change the FOV. Set the world age to 0 to unlock it.
+
+https://github.com/user-attachments/assets/f2de28c1-e860-4e0e-9ecb-bfd445ba6e3c
+
+
