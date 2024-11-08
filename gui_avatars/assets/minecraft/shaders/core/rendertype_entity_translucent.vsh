@@ -31,17 +31,21 @@ flat out int quadId;
 flat out int renderAvatar;
 
 void main() {
-    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
+    vec3 pos = Position;
 
     renderAvatar = int(ProjMat[2][3] == 0.0 && max(abs(Normal.x), max(abs(Normal.y), abs(Normal.z))) == 1.0);
     quadId = (gl_VertexID / 4) % 24;
 
     const vec2 uvs[] = vec2[](vec2(1, 0), vec2(0, 0), vec2(0, 1), vec2(1, 1));
 
-    vertexDistance = length((ModelViewMat * vec4(Position, 1.0)).xyz);
+    vertexDistance = length(Position);
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
     lightMapColor = texelFetch(Sampler2, UV2 / 16, 0);
     overlayColor = texelFetch(Sampler1, UV1, 0);
     texCoord0 = renderAvatar > 0 ? uvs[gl_VertexID % 4] : UV0;
+    const float scale = 37.0;
+    if (renderAvatar > 0) pos.xy += (uvs[gl_VertexID % 4] * scale - vec2(scale * 0.5, 0.0)) * vec2(-Normal.z, 1.0);
     normal = Normal;
+
+    gl_Position = ProjMat * ModelViewMat * vec4(pos, 1.0);
 }
