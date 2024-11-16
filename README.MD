@@ -83,9 +83,9 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/d362eb4d-9347-4cae-bb6f
 
 ## Lightmap uniforms
 
-> Native Minecraft version: 24w33a.
+> Native Minecraft version: 24w46a.
 
-Example of passing data to core shaders through the lightmap.
+An example of passing data to core shaders through the lightmap.
 
 ![](images/lightmap_uniforms.png)
 

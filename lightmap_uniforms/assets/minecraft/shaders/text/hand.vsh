@@ -1,7 +1,8 @@
 #version 150
+// Delete core/rendertype_entity_translucent.json to disable text rendering.
 
-#moj_import <light.glsl>
-#moj_import <fog.glsl>
+#moj_import <minecraft:light.glsl>
+#moj_import <minecraft:fog.glsl>
 
 in vec3 Position;
 in vec4 Color;
@@ -15,6 +16,7 @@ uniform sampler2D Sampler2;
 
 uniform mat4 ModelViewMat;
 uniform mat4 ProjMat;
+uniform mat4 TextureMat;
 uniform int FogShape;
 uniform float FogStart;
 
@@ -26,6 +28,7 @@ out vec4 vertexColor;
 out vec4 lightMapColor;
 out vec4 overlayColor;
 out vec2 texCoord0;
+
 out float renderInfo;
 out vec4 glPos;
 
@@ -40,13 +43,22 @@ void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
     vertexDistance = fog_distance(Position, FogShape);
+#ifdef NO_CARDINAL_LIGHTING
+    vertexColor = Color;
+#else
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
-    lightMapColor = vec4(texelFetch(Sampler2, UV2 / 16, 0).rgb, 1.0);
+#endif
+    lightMapColor = minecraft_fetch_lightmap(Sampler2, UV2);
     overlayColor = texelFetch(Sampler1, UV1, 0);
+
     texCoord0 = UV0;
+#ifdef APPLY_TEXTURE_MATRIX
+    texCoord0 = (TextureMat * vec4(UV0, 0.0, 1.0)).xy;
+#endif
 
     renderInfo = 0.0;
     if (FogStart > 3e38 && (mat3(ModelViewMat) * Normal).z < -0.5) {
+        // Hijack some face(s) of the first person hand to render the text.
         gl_Position = corners[gl_VertexID % 4];
         renderInfo = 1.0;
         

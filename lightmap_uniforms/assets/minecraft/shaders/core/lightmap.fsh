@@ -55,7 +55,7 @@ void main() {
     // cubic nonsense, dips to yellowish in the middle, white when fully saturated
     vec3 color = vec3(
         block_brightness,
-        block_brightness * (block_brightness * block_brightness * 0.6 + 0.4),
+        block_brightness * ((block_brightness * 0.6 + 0.4) * 0.6 + 0.4),
         block_brightness * (block_brightness * block_brightness * 0.6 + 0.4)
     );
 
