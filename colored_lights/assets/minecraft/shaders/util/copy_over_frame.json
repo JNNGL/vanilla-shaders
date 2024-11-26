@@ -1,0 +1,11 @@
+{
+    "vertex": "minecraft:util/copy_over_frame",
+    "fragment": "minecraft:util/copy_over_frame",
+    "samplers": [
+        { "name": "InSampler" }
+    ],
+    "uniforms": [
+        { "name": "InSize", "type": "float", "count": 2, "values": [ 1.0, 1.0 ] },
+        { "name": "OutSize", "type": "float", "count": 2, "values": [ 1.0, 1.0 ] }
+    ]
+}

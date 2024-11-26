@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_candle_lit",
+  "textures": {
+    "all": "minecraft:block/candle_lit",
+    "particle": "minecraft:block/candle_lit",
+    "voxel": "voxel/one_candle_lit"
+  }
+}

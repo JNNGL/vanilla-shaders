@@ -1,0 +1,14 @@
+{
+    "sources": [
+        {
+            "type": "directory",
+            "source": "voxel",
+            "prefix": "voxel/"
+        },
+        {
+            "type": "directory",
+            "source": "custom",
+            "prefix": "custom/"
+        }
+    ]
+}

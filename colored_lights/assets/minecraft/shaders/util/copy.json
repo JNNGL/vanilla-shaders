@@ -1,0 +1,8 @@
+{
+    "vertex": "minecraft:util/copy",
+    "fragment": "minecraft:util/copy",
+    "samplers": [
+        { "name": "InSampler" }
+    ],
+    "uniforms": []
+}

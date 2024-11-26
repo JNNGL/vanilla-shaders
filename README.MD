@@ -1,6 +1,14 @@
 Some of my vanilla shaders that I made for fun.<br>
 **You can use[distribute] them as long as you don't sell them and provide a link to this repo.**
 
+## Colored Lights
+
+> Requires Fabulous. Native Minecraft version: 1.21.3.
+
+WIP. Adds colored lighting to vanilla minecraft.
+
+![Colored Lights](images/colored_lights.png)
+
 ## GUI Avatars
 
 A shader that renders a nice picture of any skin using player heads.<br>

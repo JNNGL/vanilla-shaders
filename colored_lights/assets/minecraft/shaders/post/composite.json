@@ -1,0 +1,10 @@
+{
+    "vertex": "minecraft:post/composite",
+    "fragment": "minecraft:post/composite",
+    "samplers": [
+        { "name": "InSampler" },
+        { "name": "DataSampler" },
+        { "name": "DepthSampler" }
+    ],
+    "uniforms": []
+}

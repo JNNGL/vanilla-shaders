@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minecraft:block/copper_bulb_lit_powered",
+    "voxel": "voxel/copper_bulb_lit"
+  }
+}

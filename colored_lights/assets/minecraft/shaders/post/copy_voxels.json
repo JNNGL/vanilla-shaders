@@ -1,0 +1,14 @@
+{
+    "vertex": "minecraft:post/copy_voxels",
+    "fragment": "minecraft:post/copy_voxels",
+    "samplers": [
+        { "name": "InSampler" },
+        { "name": "HistorySampler" },
+        { "name": "DataSampler" },
+        { "name": "PreviousDataSampler" },
+        { "name": "DepthSampler" }
+    ],
+    "uniforms": [
+        { "name": "InSize", "type": "float", "count": 2, "values": [ 1.0, 1.0 ] }
+    ]
+}

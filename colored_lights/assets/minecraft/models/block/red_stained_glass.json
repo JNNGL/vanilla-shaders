@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all_no_cull",
+  "textures": {
+    "all": "minecraft:block/red_stained_glass",
+    "voxel": "voxel/red_stained_glass"
+  }
+}

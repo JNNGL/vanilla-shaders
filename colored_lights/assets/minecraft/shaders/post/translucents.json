@@ -1,0 +1,11 @@
+{
+    "vertex": "minecraft:post/translucents",
+    "fragment": "minecraft:post/translucents",
+    "samplers": [
+        { "name": "InSampler" },
+        { "name": "TranslucentSampler" }
+    ],
+    "uniforms": [
+        { "name": "InSize", "type": "float", "count": 2, "values": [ 1.0, 1.0 ] }
+    ]
+}

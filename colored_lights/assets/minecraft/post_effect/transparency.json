@@ -1,0 +1,81 @@
+{
+    "targets" : {
+        "voxel_history": {"width": 4000, "height": 3000},
+        "voxels": {},
+
+        "data": {"width": 100, "height": 1},
+
+        "swap": {},
+        "swap2": {}
+    },
+    "passes": [
+        {
+            "program": "minecraft:post/copy_voxels",
+            "inputs": [ { "sampler_name": "In", "target": "minecraft:main" },
+                        { "sampler_name": "History", "target": "voxel_history" },
+                        { "sampler_name": "Data", "target": "minecraft:main" },
+                        { "sampler_name": "PreviousData", "target": "data" },
+                        { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true } ],
+            "output": "voxels"
+        },
+        {
+            "program": "minecraft:post/fill",
+            "inputs": [ { "sampler_name": "In", "target": "voxels" } ],
+            "output": "swap"
+        },
+        {
+            "program": "minecraft:post/fill",
+            "inputs": [ { "sampler_name": "In", "target": "swap" } ],
+            "output": "voxels"
+        },
+
+        {
+            "program": "minecraft:util/copy_over_frame",
+            "inputs": [ { "sampler_name": "In", "target": "voxels" } ],
+            "output": "voxel_history"
+        },
+
+        {
+            "program": "minecraft:post/transparency",
+            "inputs": [ { "sampler_name": "Main", "target": "minecraft:main" },
+                        { "sampler_name": "MainDepth", "target": "minecraft:main", "use_depth_buffer": true },
+                        { "sampler_name": "Translucent", "target": "minecraft:translucent" },
+                        { "sampler_name": "TranslucentDepth", "target": "minecraft:translucent", "use_depth_buffer": true },
+                        { "sampler_name": "ItemEntity", "target": "minecraft:item_entity" },
+                        { "sampler_name": "ItemEntityDepth", "target": "minecraft:item_entity", "use_depth_buffer": true },
+                        { "sampler_name": "Particles", "target": "minecraft:particles" },
+                        { "sampler_name": "ParticlesDepth", "target": "minecraft:particles", "use_depth_buffer": true },
+                        { "sampler_name": "Clouds", "target": "minecraft:clouds" },
+                        { "sampler_name": "CloudsDepth", "target": "minecraft:clouds", "use_depth_buffer": true },
+                        { "sampler_name": "Weather", "target": "minecraft:weather" },
+                        { "sampler_name": "WeatherDepth", "target": "minecraft:weather", "use_depth_buffer": true } ],
+            "output": "swap"
+        },
+
+        {
+            "program": "minecraft:post/light",
+            "inputs": [ { "sampler_name": "In", "target": "swap" },
+                        { "sampler_name": "Data", "target": "minecraft:main" },
+                        { "sampler_name": "Voxel", "target": "voxels" },
+                        { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true },
+                        { "sampler_name": "Noise", "location": "noise", "width": 512, "height": 512 } ],
+            "output": "swap2"
+        },
+
+        {
+            "program": "minecraft:util/copy_over_frame",
+            "inputs": [ { "sampler_name": "In", "target": "minecraft:main" } ],
+            "output": "data"
+        },
+
+        {
+            "program": "minecraft:post/composite",
+            "inputs": [ { "sampler_name": "In", "target": "swap2" },
+                        { "sampler_name": "Data", "target": "minecraft:main" },
+                        { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true },
+                        { "sampler_name": "A", "target": "data" },
+                        { "sampler_name": "B", "target": "voxel_history" } ],
+            "output": "minecraft:main"
+        }
+    ]
+}
