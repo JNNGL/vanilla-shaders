@@ -4,6 +4,7 @@
 #moj_import <minecraft:light.glsl>
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:voxelization.glsl>
+#moj_import <minecraft:datamarker.glsl>
 #moj_import <minecraft:encodings.glsl>
 
 in vec3 Position;
@@ -76,14 +77,14 @@ void main() {
             return;
         }
 
-        vec2 bottomLeftCorner = vec2(-1.0, -1.0);
-        vec2 topRightCorner = vec2(-0.9, -0.99); // TODO: We have ScreenSize
+        vec2[] corners = vec2[](
+            vec2(0.0, 1.0),
+            vec2(0.0, 0.0),
+            vec2(1.0, 0.0),
+            vec2(1.0, 1.0)
+        );
 
-        switch (gl_VertexID % 4) {
-            case 0: gl_Position = vec4(bottomLeftCorner.x, topRightCorner.y,   -1.0, 1.0); break;
-            case 1: gl_Position = vec4(bottomLeftCorner.x, bottomLeftCorner.y, -1.0, 1.0); break;
-            case 2: gl_Position = vec4(topRightCorner.x,   bottomLeftCorner.y, -1.0, 1.0); break;
-            case 3: gl_Position = vec4(topRightCorner.x,   topRightCorner.y,   -1.0, 1.0); break;
-        }
+        vec2 markerSize = markerSize() * (2.0 / ScreenSize);
+        gl_Position = vec4(-1.0 + corners[gl_VertexID % 4] * markerSize, 0.0, 1.0);
     }
 }

@@ -26,12 +26,13 @@ void main() {
     vec4 history = encodeLogLuv(vec3(0.0));
     if (hasHistory > 0) {
         ivec2 pixelPos = ivec2(gl_FragCoord.xy);
+        ivec3 voxelPos = ivec3(0, 0, 0);
         if (blockOffset != ivec3(0, 0, 0)) {
-            ivec3 voxelPos = pixelToVoxel(pixelPos, ivec2(InSize), voxelizeDist);
+            voxelPos = pixelToVoxel(pixelPos, ivec2(InSize), voxelizeDist);
             voxelPos -= blockOffset;
             pixelPos = voxelToPixel(voxelPos, ivec2(InSize), voxelizeDist);
         }
-        if (clamp(pixelPos, ivec2(0, 1), ivec2(InSize) - 1) == pixelPos) {
+        if (!any(greaterThanEqual(abs(voxelPos), ivec3(voxelizeDist.x)))) {
             history = texelFetch(HistorySampler, pixelPos, 0);
         }
     }

@@ -23,8 +23,8 @@ flat in ivec2 voxelizeDist;
 out vec4 fragColor;
 
 vec3 fetchLightData(ivec3 voxelPos) {
+    if (any(greaterThanEqual(abs(voxelPos), ivec3(voxelizeDist.x)))) return vec3(0.0);
     ivec2 pixelPos = voxelToPixel(voxelPos, ivec2(DataSize), voxelizeDist);
-    if (clamp(pixelPos, ivec2(0, 1), ivec2(DataSize) - 1) != pixelPos) return vec3(0.0);
     vec4 lightData = texelFetch(VoxelSampler, pixelPos, 0);
     if (lightData == vec4(1.0)) return vec3(0.0);
     return decodeLogLuv(lightData);
@@ -96,6 +96,6 @@ void main() {
     fragColor.rgb = acesFilm(fragColor.rgb);
 
 #if (VISUALIZE_LIGHT_COLOR == yes)
-    fragColor.rgb = sqrt(lightData / (1.0 + lightData * lightData));
+    fragColor.rgb = sqrt(lightData / (1.0 + lightData));
 #endif
 }

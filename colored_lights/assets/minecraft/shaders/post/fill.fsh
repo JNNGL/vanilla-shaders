@@ -36,8 +36,8 @@ void main() {
     ivec3 voxelPos = pixelToVoxel(ivec2(gl_FragCoord.xy), ivec2(InSize), voxelizeDist);
     for (int i = 0; i < 6; i++) {
         ivec3 neighbourPos = voxelPos + neighbourOffsets[i];
+        if (any(greaterThanEqual(abs(neighbourPos), ivec3(voxelizeDist.x)))) continue;
         ivec2 pixelPos = voxelToPixel(neighbourPos, ivec2(InSize), voxelizeDist);
-        if (clamp(pixelPos, ivec2(0, 1), ivec2(InSize) - 1) != pixelPos) continue;
 
         vec4 nData = texelFetch(InSampler, pixelPos, 0);
 

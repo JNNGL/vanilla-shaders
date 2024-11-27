@@ -16,8 +16,12 @@
 // 32-34 - sun direction
 // 35-36 - sky factor
 
+vec2 markerSize() {
+    return vec2(39.0, 1.0);
+}
+
 bool discardDataMarker(ivec2 pixel) {
-    return pixel.y >= 1 || pixel.x > 38;
+    return pixel.y >= 1.0 || pixel.x >= 39.0;
 }
 
 vec4 writeDataMarker(ivec2 pixel, mat4 projMat, float fogStart, float fogEnd, vec3 chunkOffset, float gameTime, mat3 viewMat, vec2 projUnjitter) {
