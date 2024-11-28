@@ -5,7 +5,7 @@ Some of my vanilla shaders that I made for fun.<br>
 
 > Requires Fabulous. Native Minecraft version: 1.21.3.
 
-WIP. Adds colored lighting to vanilla minecraft.
+Adds colored lighting to vanilla minecraft.
 
 ![Colored Lights](images/colored_lights.png)
 
