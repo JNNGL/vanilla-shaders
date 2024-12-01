@@ -52,16 +52,6 @@ Simple SSAO implementation.
 ![](images/ao2.png) | ![](images/noao2.png)
 ![](images/ao3.png) | ![](images/noao3.png)
 
-## Horizon-Based AO
-
-> Requires Fabulous. Native Minecraft version: 1.21.
-
-HBAO with temporal amortization.
-
- HBAO                | SSAO                 | Vanilla
-:-------------------:|:--------------------:|:--------------------------:
-![](images/hbao.png) | ![](images/ssao.png) | ![](images/vanillaao.png)
-
 ## Minimap
 
 > Requires Fabulous. Native Minecraft version: 1.20.4.
