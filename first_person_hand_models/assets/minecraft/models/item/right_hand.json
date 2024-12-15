@@ -1,0 +1,24 @@
+{
+    "textures": {
+        "particle": "block/soul_sand"
+    },
+    "display": {
+        "firstperson_righthand": {
+            "rotation": [ 180.0, -22.5, 180.0 ],
+            "translation": [ -6.4077, 3.525, 0.4666 ],
+            "scale": [ 0.471, 0.515, 1.515 ]
+        },
+        "gui": {
+            "scale": [ 0, 0, 0 ]
+        },
+        "fixed": {
+            "scale": [ 0, 0, 0 ]
+        },
+        "ground": {
+            "scale": [ 0, 0, 0 ]
+        },
+        "thirdperson_righthand": {
+            "scale": [ 0, 0, 0 ]
+        }
+    }
+}

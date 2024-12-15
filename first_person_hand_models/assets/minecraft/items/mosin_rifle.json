@@ -1,0 +1,27 @@
+{
+	"model": {
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "minecraft:item/mosin_rifle"
+			},
+			{
+				"type": "minecraft:special",
+				"base": "minecraft:item/left_hand",
+				"model": {
+				    "type": "minecraft:head",
+				    "kind": "player"
+				}
+			},
+			{
+				"type": "minecraft:special",
+				"base": "minecraft:item/right_hand",
+				"model": {
+				    "type": "minecraft:head",
+				    "kind": "player"
+				}
+			}
+		]
+	}
+}

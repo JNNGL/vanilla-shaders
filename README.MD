@@ -9,6 +9,16 @@ Adds colored lighting to vanilla minecraft.
 
 ![Colored Lights](images/colored_lights.png)
 
+## First Person Hand Models
+
+> Native Minecraft version: 1.21.4.
+
+Allows to add first person hands with skins to item models.<br>
+
+Gun model made by Falanta.
+
+![First Person Hand Models](images/hands.png)
+
 ## GUI Avatars
 
 A shader that renders a nice picture of any skin using player heads.<br>
