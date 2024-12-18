@@ -1,0 +1,10 @@
+{
+	"model": {
+		"type": "minecraft:special",
+		"base": "minecraft:item/avatar",
+		"model": {
+			"type": "minecraft:head",
+		    "kind": "player"
+		}
+    }
+}

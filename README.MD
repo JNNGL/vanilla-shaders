@@ -20,6 +20,8 @@ Gun model made by Falanta.
 
 ## GUI Avatars
 
+> Native Minecraft version: 1.21.4.
+
 A shader that renders a nice picture of any skin using player heads.<br>
 Highly inspired by Spheya's shader.
 
