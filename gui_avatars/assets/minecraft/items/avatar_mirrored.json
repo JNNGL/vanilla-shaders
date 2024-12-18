@@ -1,7 +1,7 @@
 {
 	"model": {
 		"type": "minecraft:special",
-		"base": "minecraft:item/avatar_flipped",
+		"base": "minecraft:item/avatar_mirrored",
 		"model": {
 			"type": "minecraft:head",
 		    "kind": "player"
