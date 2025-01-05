@@ -1,7 +1,5 @@
 #version 150
 
-in vec4 Position;
-
 out vec2 texCoord;
 
 const vec4[] corners = vec4[](

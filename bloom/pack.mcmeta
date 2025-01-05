@@ -1,7 +1,7 @@
 {
   "pack": {
-    "pack_format": 34,
-    "description": "Bloom by JNNGL"
+    "pack_format": 46,
+    "description": "Bloom shader by JNNGL"
   }
 }
 

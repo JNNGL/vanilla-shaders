@@ -41,7 +41,7 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/f94adb60-9467-44ee-8b8c
 
 ## Bloom
 
-> Requires Fabulous. Native Minecraft version: 1.21.
+> Requires Fabulous. Native Minecraft version: 1.21.4.
 
 ![Bloom](images/bloom.png)
 

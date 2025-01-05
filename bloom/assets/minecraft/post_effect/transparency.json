@@ -1,0 +1,130 @@
+{
+    "targets": {
+        "emissive": {},
+        "final": {},
+        "a": {}, "b": {}, "c": {}, "d": {}, "e": {}, "f": {}, "g": {},
+        "f1": {}, "e1": {}, "d1": {}, "c1": {}, "b1": {}, "a1": {}, "bloom": {}
+    },
+    "passes": [
+        {
+            "program": "minecraft:post/transparency",
+            "inputs": [ { "sampler_name": "Main", "target": "minecraft:main" },
+                        { "sampler_name": "MainDepth", "target": "minecraft:main", "use_depth_buffer": true },
+                        { "sampler_name": "Translucent", "target": "minecraft:translucent" },
+                        { "sampler_name": "TranslucentDepth", "target": "minecraft:translucent", "use_depth_buffer": true },
+                        { "sampler_name": "ItemEntity", "target": "minecraft:item_entity" },
+                        { "sampler_name": "ItemEntityDepth", "target": "minecraft:item_entity", "use_depth_buffer": true },
+                        { "sampler_name": "Particles", "target": "minecraft:particles" },
+                        { "sampler_name": "ParticlesDepth", "target": "minecraft:particles", "use_depth_buffer": true },
+                        { "sampler_name": "Clouds", "target": "minecraft:clouds" },
+                        { "sampler_name": "CloudsDepth", "target": "minecraft:clouds", "use_depth_buffer": true },
+                        { "sampler_name": "Weather", "target": "minecraft:weather" },
+                        { "sampler_name": "WeatherDepth", "target": "minecraft:weather", "use_depth_buffer": true } ],
+            "output": "final"
+        },
+        {
+            "program": "minecraft:bloom/emissive_pixels",
+            "inputs": [ { "sampler_name": "In", "target": "minecraft:main" },
+                        { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true } ],
+            "output": "emissive"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "emissive", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 1.0 ] } ],
+            "output": "a"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "a", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 2.0 ] } ],
+            "output": "b"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "b", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 3.0 ] } ],
+            "output": "c"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "c", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 4.0 ] } ],
+            "output": "d"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "d", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 5.0 ] } ],
+            "output": "e"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "e", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 6.0 ] } ],
+            "output": "f"
+        },
+        {
+            "program": "minecraft:bloom/downsample",
+            "inputs": [ { "sampler_name": "In", "target": "f", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 7.0 ] } ],
+            "output": "g"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "g", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "f", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 7.0 ] } ],
+            "output": "f1"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "f1", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "e", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 6.0 ] } ],
+            "output": "e1"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "e1", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "d", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 5.0 ] } ],
+            "output": "d1"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "d1", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "c", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 4.0 ] } ],
+            "output": "c1"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "c1", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "b", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 3.0 ] } ],
+            "output": "b1"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "b1", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "a", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 2.0 ] } ],
+            "output": "a1"
+        },
+        {
+            "program": "minecraft:bloom/upsample",
+            "inputs": [ { "sampler_name": "In", "target": "a1", "bilinear": true },
+                        { "sampler_name": "Downsampled", "target": "emissive", "bilinear": true } ],
+            "uniforms": [ { "name": "Iteration", "values": [ 1.0 ] } ],
+            "output": "bloom"
+        },
+        {
+            "program": "minecraft:bloom/mix_bloom",
+            "inputs": [ { "sampler_name": "In", "target": "final" },
+                        { "sampler_name": "Bloom", "target": "bloom" },
+                        { "sampler_name": "Emissive", "target": "emissive" } ],
+            "output": "minecraft:main"
+        }
+    ]
+}
