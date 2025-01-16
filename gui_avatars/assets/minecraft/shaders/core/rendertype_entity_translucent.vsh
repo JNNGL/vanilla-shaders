@@ -44,7 +44,7 @@ void main() {
     overlayColor = texelFetch(Sampler1, UV1, 0);
     texCoord0 = renderAvatar > 0 ? uvs[gl_VertexID % 4] : UV0;
     const float scale = 37.0;
-    if (renderAvatar > 0) pos.xy += (uvs[gl_VertexID % 4] * scale - vec2(scale * 0.5, 0.0)) * vec2(-Normal.z, 1.0);
+    if (renderAvatar > 0) pos.xy += (uvs[gl_VertexID % 4] * scale - vec2(scale * 0.5, 20.0)) * vec2(Normal.z, 1.0);
     normal = Normal;
 
     gl_Position = ProjMat * ModelViewMat * vec4(pos, 1.0);
