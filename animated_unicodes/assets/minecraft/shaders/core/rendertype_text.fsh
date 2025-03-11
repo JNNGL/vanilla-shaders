@@ -18,7 +18,7 @@ in float isAnimated;
 out vec4 fragColor;
 
 void main() {
-    vec4 color = texture(Sampler0, isAnimated > 0.0 ? texCoord1 : texCoord0) * vertexColor * ColorModulator;
+    vec4 color = texture(Sampler0, isAnimated > 0.5 ? texCoord1 : texCoord0) * vertexColor * ColorModulator;
     if (color.a < 0.1) {
         discard;
     }

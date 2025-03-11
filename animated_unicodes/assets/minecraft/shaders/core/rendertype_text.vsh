@@ -15,7 +15,6 @@ uniform sampler2D Sampler2;
 
 uniform mat4 ModelViewMat;
 uniform mat4 ProjMat;
-uniform mat3 IViewRotMat;
 uniform int FogShape;
 uniform float GameTime;
 
@@ -29,26 +28,21 @@ bool validateProperty2(vec4 data) {
     return ivec2(round(data.zw * 255.0)) == ivec2(75, 1);
 }
 
-bool decodeProperties0(in vec2 uv, out ivec2 dim, out int frame_dim,
-                       out int nframes, out float time, out ivec2 size) {
-    vec4 magic = texture(Sampler0, uv);
-    if (magic != vec4(149.0 / 255.0, 213.0 / 255.0, 75.0 / 255.0, 1.0 / 255.0)) {
+bool decodeProperties0(in ivec2 coord, out ivec2 dim, out int frame_dim,
+                       out int nframes, out float time) {
+    vec4 magic = texelFetch(Sampler0, coord, 0);
+    if (ivec4(round(magic * 255.0)) != ivec4(149, 213, 75, 1)) {
         return false;
     }
 
-    ivec2 texsize = textureSize(Sampler0, 0);
-    float x1 = 1.0 / float(texsize.x);
-
-    size = texsize;
-
-    vec4 dim_in = texture(Sampler0, uv + vec2(x1, 0.0));
+    vec4 dim_in = texelFetch(Sampler0, coord + ivec2(1, 0), 0);
     if (!validateProperty2(dim_in)) {
         return false;
     }
 
     dim = ivec2(round(dim_in.xy * 255.0));
 
-    vec4 frame_data = texture(Sampler0, uv + vec2(x1 * 2.0, 0.0));
+    vec4 frame_data = texelFetch(Sampler0, coord + ivec2(2, 0), 0);
     if (!validateProperty2(frame_data)) {
         return false;
     }
@@ -56,7 +50,7 @@ bool decodeProperties0(in vec2 uv, out ivec2 dim, out int frame_dim,
     frame_dim = int(round(frame_data.x * 255.0));
     nframes = int(round(frame_data.y * 255.0));
 
-    vec4 packed_time = texture(Sampler0, uv + vec2(x1 * 3.0, 0.0));
+    vec4 packed_time = texelFetch(Sampler0, coord + ivec2(3, 0), 0);
     if (!validateProperty2(packed_time)) {
         return false;
     }
@@ -67,20 +61,24 @@ bool decodeProperties0(in vec2 uv, out ivec2 dim, out int frame_dim,
 
 bool decodeProperties(in vec2 uv, out ivec2 dim, out int frame_dim, out int nframes,
                       out float time, out ivec2 size, out vec2 origin) {
-    if (decodeProperties0(uv, dim, frame_dim, nframes, time, size)) {
+    vec2 texSize = vec2(textureSize(Sampler0, 0));
+    size = ivec2(texSize);
+
+    ivec2 coord = ivec2(uv * texSize);
+    if (decodeProperties0(coord, dim, frame_dim, nframes, time)) {
         origin = uv;
         return true;
     }
 
-    vec4 uv_offset = texture(Sampler0, uv);
+    vec4 uv_offset = texelFetch(Sampler0, coord, 0);
     if (!validateProperty2(uv_offset)) {
         return false;
     }
 
-    vec2 pointing = uv - uv_offset.xy * (vec2(255.0) / vec2(textureSize(Sampler0, 0)));
-    origin = pointing;
+    ivec2 pointing = coord - ivec2(round(uv_offset.xy * 255.0));
+    origin = vec2(pointing) / texSize;
 
-    return decodeProperties0(pointing, dim, frame_dim, nframes, time, size);
+    return decodeProperties0(pointing, dim, frame_dim, nframes, time);
 }
 
 void main() {
@@ -106,7 +104,7 @@ void main() {
         uv += (vec2(u, v) * vec2(frame_dim) + 1.0) / vec2(size);
     }
 
-    vertexDistance = fog_distance(IViewRotMat * Position, FogShape);
+    vertexDistance = fog_distance(Position, FogShape);
     vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
     texCoord0 = UV0;
     texCoord1 = uv;

@@ -47,7 +47,7 @@ https://github.com/JNNGL/vanilla-shaders/assets/45935949/f94adb60-9467-44ee-8b8c
 
 ## Animated Unicodes
 
-> Native Minecraft version: 1.21.
+> Native Minecraft version: 1.21.4.
 
 https://github.com/JNNGL/vanilla-shaders/assets/45935949/66c9a155-ea97-4c16-823b-564b883db5aa
 
